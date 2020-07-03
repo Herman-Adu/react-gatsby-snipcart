@@ -21,35 +21,15 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={`${post.frontmatter.title} | ${siteTitle}`}
-          link={[{
-            href:"https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css",
-            rel:"stylesheet",
-            type:"text/css" 
-          }]}
-          script={[{ 
-            type: 'text/javascript',
-            id: "snipcart",
-            "data-api-key": "YjdiNWIyOTUtZTIyMy00MWMwLTkwNDUtMzI1M2M2NTgxYjE0",
-            src:"https://cdn.snipcart.com/scripts/2.0/snipcart.js" 
-          },{
-            type: 'text/javascript',
-            src:"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
-          }]}/>
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-        </p>
-        
+        <Helmet htmlAttributes={{ lang: 'en' }}>
+          <title>${siteTitle}</title>
+          <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.css" />
+          <div id="snipcart" data-api-key="NDFiNWZmOTgtZDA4ZC00MGJlLWEyM2MtMTU4M2NlY2Y1OTMwNjM3MjkzNzA3NDg5OTExMTk4" hidden></div>
+          <script src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js"></script>
+        </Helmet>
+
+
+
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         
         <BuyButton post={post.frontmatter} images={images}>
